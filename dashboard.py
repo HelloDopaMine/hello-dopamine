@@ -29,21 +29,20 @@ st.markdown("---")
 st.sidebar.markdown("### 🌟 Hello DopaMine Pro Pass")
 st.sidebar.write("Unlock your full chronological velocity tracking, entropy index metrics, and a tailored screen-time correction schedule.")
 
-PAYMENT_LINK = "https://buymeacoffee.com/HelloDopaMine/e/557971" 
+PAYMENT_LINK = "https://buymeacoffee.com" 
 
 st.sidebar.markdown(f'<a href="{PAYMENT_LINK}" target="_blank"><button style="width:100%; padding:12px; background-color:#5e7463; color:white; border:none; border-radius:8px; font-weight:bold; cursor:pointer; font-size:16px;">Unlock Full Psychological Profile ($9)</button></a>', unsafe_allow_html=True)
 
 # --- ADHD BEGINNER INSTRUCTION MATRIX ---
 st.markdown("## 🧭 Quick Start: See Your Stats in 30 Seconds")
-st.write("No waiting days for files. Follow these 3 simple, fast steps:")
+st.write("No waiting days for files. Follow these simple, fast steps:")
 
 st.markdown("### 📍 Step 1: Open Your History Page")
 st.markdown("""
 **Choose the link method that matches your device:**
 * 💻 **If you are on a Desktop/Laptop (Mac or PC):** Click [👉 Open My Desktop History](https://youtube.com)
 * 📱 **If you are on a Phone or Tablet:** Click [👉 Open Mobile Web History](https://youtube.com)
- """)
-
+""")
 st.write("(Make sure you are logged in so you see your list of watched videos!)")
 
 st.markdown("### ⌨️ Step 2: Open the Magic Console Window")
@@ -52,7 +51,14 @@ st.markdown("• 🍏 **If you are on a Mac:** Press `Option` + `Cmd` + `J`")
 st.markdown("• 🪟 **If you are on Windows/PC:** Press `Ctrl` + `Shift` + `J`")
 st.write("*(A white panel will open on the right side of your screen with a flashing line at the bottom)*")
 
-st.markdown("### 📋 Step 3: Copy & Paste the Code Below")
+# CRUCIAL ADDITION: Chrome/Edge Security Override Warning Instructions Displayed Live on Screen
+st.markdown("### ⚠️ Step 3: Lower Browser Security Wall (If Prompted)")
+st.write("Look inside that newly opened side window panel. If you see a bold yellow warning text saying **'Don’t paste code'**, follow these quick steps to bypass it:")
+st.markdown("1. Click your mouse cursor directly into the input line at the very bottom next to the blue arrow.")
+st.markdown("2. Type this exact text command: **`allow pasting`**")
+st.markdown("3. Press **`Enter`** on your keyboard. *(Your browser will now allow you to run data extraction code scripts safely)*")
+
+st.markdown("### 📋 Step 4: Copy & Paste the Code Below")
 st.write("Copy this single line of code, paste it next to that flashing line in the window, and hit **Enter**. Your file will download instantly!")
 
 st.code("""
@@ -60,7 +66,7 @@ st.code("""
 """, language="javascript")
 
 st.markdown("---")
-st.markdown("### 📥 Step 4: Drop Your File Right Here")
+st.markdown("### 📥 Step 5: Drop Your File Right Here")
 
 # Secure File Uploader Pipeline
 uploaded_file = st.file_uploader(label="Upload file to generate metrics", type=["json"], label_visibility="collapsed")
