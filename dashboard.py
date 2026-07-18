@@ -7,15 +7,38 @@ from dateutil import tz
 # Premium UI Configuration
 st.set_page_config(page_title="Hello DopaMine Pro", page_icon="🚀", layout="wide")
 
-# Custom CSS for Premium Branding
+# Custom CSS for Calming Brand Alignment
 st.markdown("""
     <style>
-    .main { background-color: #0e1117; }
-    h1 { color: #FF0000; font-family: 'Helvetica Neue', sans-serif; font-weight: 800; }
-    .stMetric { background-color: #1f2937; padding: 20px; border-radius: 10px; border: 1px solid #374151; }
-    div[data-testid="stMetricValue"] { color: #ffffff !important; }
+    /* Main Web Background and Typography */
+    .main { background-color: #1c2321; }
+    h1 { color: #a9bba2 !important; font-family: 'Helvetica Neue', sans-serif; font-weight: 800; }
+    h2, h3, p, span { color: #f4f6f0 !important; }
+    
+    /* Premium Metric Blocks styling */
+    .stMetric { background-color: #2a3431; padding: 20px; border-radius: 12px; border: 1px solid #475853; }
+    div[data-testid="stMetricValue"] { color: #e1e7dd !important; font-weight: 700; }
+    div[data-testid="stMetricLabel"] { color: #a9bba2 !important; }
+    
+    /* Left Sidebar Styling Overrides */
+    section[data-testid="stSidebar"] { background-color: #242c29 !important; border-right: 1px solid #323d39; }
+    
+    /* Clean Custom Button */
+    div.stButton > button:first-child {
+        background-color: #5e7463 !important;
+        color: #ffffff !important;
+        border: none !important;
+        border-radius: 8px !important;
+        padding: 12px 24px !important;
+        font-weight: bold !important;
+        transition: background-color 0.3s ease !important;
+    }
+    div.stButton > button:first-child:hover {
+        background-color: #728c78 !important;
+    }
     </style>
     """, unsafe_allow_html=True)
+
 
 st.title("🚀 Hello DopaMine Pro")
 st.subheader("The Ultimate YouTube Habit & Productivity Analyzer")
@@ -29,7 +52,7 @@ st.sidebar.write("Get deep AI-driven psychological watch-habit profiles, exporta
 # !!! PASTE YOUR COPIED BUY ME A COFFEE LINK IN THE QUOTES BELOW !!!
 PAYMENT_LINK = "https://buymeacoffee.com/HelloDopaMine/e/557971" 
 
-st.sidebar.markdown(f'<a href="{PAYMENT_LINK}" target="_blank"><button style="width:100%; padding:12px; background-color:#FF0000; color:white; border:none; border-radius:6px; font-weight:bold; cursor:pointer;">Unlock Lifetime Pro Access ($9)</button></a>', unsafe_allow_html=True)
+st.sidebar.markdown(f'<a href="{PAYMENT_LINK}" target="_blank"><button style="width:100%; padding:12px; background-color:#5e7463; color:white; border:none; border-radius:6px; font-weight:bold; cursor:pointer;">Unlock Lifetime Pro Access ($9)</button></a>', unsafe_allow_html=True)
 
 # File Uploader
 uploaded_file = st.file_uploader(label="⚡ Securely drag and drop your watch-history.json file here", type=["json"])
@@ -89,7 +112,7 @@ if uploaded_file is not None:
     st.markdown("---")
     st.subheader("📈 Digital Footprint Over Time (Annual Scale)")
     if years:
-        st.bar_chart(pd.DataFrame(years, columns=["Year"]).value_counts().reset_index(name="Count").sort_values("Year"), x="Year", y="Count", color="#FF0000", use_container_width=True)
+        st.bar_chart(pd.DataFrame(years, columns=["Year"]).value_counts().reset_index(name="Count").sort_values("Year"), x="Year", y="Count", color="#a9bba2", use_container_width=True)
 
     # Locked Premium Feature Teaser
     st.markdown("---")
