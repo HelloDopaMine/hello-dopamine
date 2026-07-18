@@ -29,7 +29,7 @@ st.markdown("---")
 st.sidebar.markdown("### 🌟 Hello DopaMine Pro Pass")
 st.sidebar.write("Unlock your full chronological velocity tracking, entropy index metrics, and a tailored screen-time correction schedule.")
 
-PAYMENT_LINK = "https://buymeacoffee.com" 
+PAYMENT_LINK = "https://buymeacoffee.com/HelloDopaMine/e/557971" 
 
 st.sidebar.markdown(f'<a href="{PAYMENT_LINK}" target="_blank"><button style="width:100%; padding:12px; background-color:#5e7463; color:white; border:none; border-radius:8px; font-weight:bold; cursor:pointer; font-size:16px;">Unlock Full Psychological Profile ($9)</button></a>', unsafe_allow_html=True)
 
