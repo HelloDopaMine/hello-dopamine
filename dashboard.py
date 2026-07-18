@@ -95,6 +95,3 @@ if uploaded_file is not None:
     st.markdown("---")
     st.subheader("🧠 Premium Psychological Profile Analytics (LOCKED)")
     st.info("🔒 Unlock Premium Access in the sidebar to reveal your ADHD attention span analysis, dopamine loop triggers, and screen-time correction schedule.")
-git remote add origin https://github.com/HelloDopaMine/hello-dopamine.git
-git branch -M main
-git push -u origin main
