@@ -51,7 +51,6 @@ st.markdown("• 🍏 **If you are on a Mac:** Press `Option` + `Cmd` + `J`")
 st.markdown("• 🪟 **If you are on Windows/PC:** Press `Ctrl` + `Shift` + `J`")
 st.write("*(A white panel will open on the right side of your screen with a flashing line at the bottom)*")
 
-# CRUCIAL ADDITION: Chrome/Edge Security Override Warning Instructions Displayed Live on Screen
 st.markdown("### ⚠️ Step 3: Lower Browser Security Wall (If Prompted)")
 st.write("Look inside that newly opened side window panel. If you see a bold yellow warning text saying **'Don’t paste code'**, follow these quick steps to bypass it:")
 st.markdown("1. Click your mouse cursor directly into the input line at the very bottom next to the blue arrow.")
@@ -83,22 +82,31 @@ if uploaded_file is not None:
     local_zone = tz.tzlocal()
 
     for entry in data:
-        if isinstance(entry, dict) and "titleUrl" in entry:
-            if "title" in entry and entry["title"].startswith("Watched "):
-                titles.append(entry["title"].replace("Watched ", "", 1))
+        if isinstance(entry, dict):
+            title_text = entry.get("title", "")
+            if title_text.startswith("Watched "):
+                titles.append(title_text.replace("Watched ", "", 1))
+                
                 sub = entry.get("subtitles")
+                c_name = None
                 if isinstance(sub, list) and len(sub) > 0:
                     c_name = sub.get("name") if isinstance(sub, dict) else None
                 elif isinstance(sub, dict):
                     c_name = sub.get("name")
+                
+                if c_name:
+                    channels.append(c_name)
                 else:
-                    c_name = None
-                if c_name: channels.append(c_name)
-                if "time" in entry:
-                    try: years.append(parser.isoparse(entry["time"]).astimezone(local_zone).year)
-                    except: continue
-            elif "title" in entry and entry["title"].startswith("Searched for "):
-                query = entry["title"].replace("Searched for ", "", 1)
+                    channels.append("Algorithmic Recommendation")
+                
+                time_text = entry.get("time")
+                if time_text:
+                    try:
+                        years.append(parser.isoparse(time_text).astimezone(local_zone).year)
+                    except:
+                        years.append(2026) 
+            elif title_text.startswith("Searched for "):
+                query = title_text.replace("Searched for ", "", 1)
                 if query.strip(): search_queries.append(query)
 
     # Core Metric Calculations
@@ -124,6 +132,8 @@ if uploaded_file is not None:
         st.subheader("🔥 Top 10 Search Intent Triggers")
         if search_queries:
             st.dataframe(pd.DataFrame(search_queries, columns=["Query Keyword"]).value_counts().reset_index(name="Searches").head(10), use_container_width=True, hide_index=True)
+        else:
+            st.info("💡 No explicit search text tags captured in quick-scrape mode file format.")
 
     st.markdown("---")
     
