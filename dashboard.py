@@ -29,12 +29,36 @@ st.markdown("---")
 st.sidebar.markdown("### 🌟 Hello DopaMine Pro Pass")
 st.sidebar.write("Unlock your full chronological velocity tracking, entropy index metrics, and a tailored screen-time correction schedule.")
 
-PAYMENT_LINK = "https://buymeacoffee.com/HelloDopaMine/e/557971" 
+PAYMENT_LINK = "https://buymeacoffee.com" 
 
 st.sidebar.markdown(f'<a href="{PAYMENT_LINK}" target="_blank"><button style="width:100%; padding:12px; background-color:#5e7463; color:white; border:none; border-radius:8px; font-weight:bold; cursor:pointer; font-size:16px;">Unlock Full Psychological Profile ($9)</button></a>', unsafe_allow_html=True)
 
-# Secure File Uploader Pipeline (Only ONE box allowed!)
-uploaded_file = st.file_uploader(label="⚡ Securely drag and drop your watch-history.json file here", type=["json"])
+# --- ADHD BEGINNER INSTRUCTION MATRIX ---
+st.markdown("## 🧭 Quick Start: See Your Stats in 30 Seconds")
+st.write("No waiting days for files. Follow these 3 simple, fast steps:")
+
+st.markdown("### 📍 Step 1: Open Your History Page")
+st.markdown("Click this link to open your official history page in a new tab: [👉 Open My YouTube History](https://youtube.com)")
+st.write("(Make sure you are logged in so you see your list of watched videos!)")
+
+st.markdown("### ⌨️ Step 2: Open the Magic Console Window")
+st.write("Once that page is open, press these keys on your keyboard at the same time to pop open a hidden text window:")
+st.markdown("• 🍏 **If you are on a Mac:** Press `Option` + `Cmd` + `J`")
+st.markdown("• 🪟 **If you are on Windows/PC:** Press `Ctrl` + `Shift` + `J`")
+st.write("*(A white panel will open on the right side of your screen with a flashing line at the bottom)*")
+
+st.markdown("### 📋 Step 3: Copy & Paste the Code Below")
+st.write("Copy this single line of code, paste it next to that flashing line in the window, and hit **Enter**. Your file will download instantly!")
+
+st.code("""
+(async()=>{let d=[];document.querySelectorAll("ytd-video-renderer, ytd-compact-video-renderer").forEach(i=>{let t=i.querySelector("#video-title"),c=i.querySelector("#channel-name");if(t)d.push({"title":"Watched "+t.innerText.trim(),"titleUrl":t.href||"","subtitles":{"name":c?c.innerText.trim():"Unknown"},"time":new Date().toISOString()})});let b=new Blob([JSON.stringify(d,null,2)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="watch-history.json";document.body.appendChild(a);a.click();})();
+""", language="javascript")
+
+st.markdown("---")
+st.markdown("### 📥 Step 4: Drop Your File Right Here")
+
+# Secure File Uploader Pipeline
+uploaded_file = st.file_uploader(label="Upload file to generate metrics", type=["json"], label_visibility="collapsed")
 
 if uploaded_file is not None:
     st.success("🔒 Data packet parsed locally. Compiling initial behavioral vectors...")
@@ -53,7 +77,7 @@ if uploaded_file is not None:
                 titles.append(entry["title"].replace("Watched ", "", 1))
                 sub = entry.get("subtitles")
                 if isinstance(sub, list) and len(sub) > 0:
-                    c_name = sub[0].get("name") if isinstance(sub[0], dict) else None
+                    c_name = sub.get("name") if isinstance(sub, dict) else None
                 elif isinstance(sub, dict):
                     c_name = sub.get("name")
                 else:
