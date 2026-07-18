@@ -38,7 +38,12 @@ st.markdown("## 🧭 Quick Start: See Your Stats in 30 Seconds")
 st.write("No waiting days for files. Follow these 3 simple, fast steps:")
 
 st.markdown("### 📍 Step 1: Open Your History Page")
-st.markdown("Click this link to open your official history page in a new tab: [👉 Open My YouTube History](https://youtube.com)")
+    st.markdown("""
+    **Choose the link method that matches your device:**
+    * 💻 **If you are on a Desktop/Laptop (Mac or PC):** Click [👉 Open My Desktop History](https://youtube.com)
+    * 📱 **If you are on a Phone or Tablet:** Click [👉 Open Mobile Web History](https://youtube.com)
+    """)
+
 st.write("(Make sure you are logged in so you see your list of watched videos!)")
 
 st.markdown("### ⌨️ Step 2: Open the Magic Console Window")
